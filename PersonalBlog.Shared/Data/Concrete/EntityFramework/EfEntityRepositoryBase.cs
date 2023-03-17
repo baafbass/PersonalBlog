@@ -17,7 +17,7 @@ namespace PersonalBlog.Shared.Data.Concrete.EntityFramework
         {
             _context = context;
         }
-        //Happy To see you
+        //Happy To see you my bro
 
         public async Task<TEntity> AddAsync(TEntity entity)
         {

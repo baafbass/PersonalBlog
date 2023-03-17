@@ -9,6 +9,6 @@ namespace PersonalBlog.Entities.Concrete
 {
     public class Hobbies:EntityBase,IEntity
     {
-        public string Text { get; set; }
+        public string hobbies { get; set; }
     }
 }
