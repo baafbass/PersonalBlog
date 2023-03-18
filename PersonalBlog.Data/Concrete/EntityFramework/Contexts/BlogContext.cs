@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PersonalBlog.Data.Concrete.EntityFramework.Mappings;
 using PersonalBlog.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,10 @@ namespace PersonalBlog.Data.Concrete.EntityFramework.Contexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(connectionString: @"Server=DESKTOP-VOER1P3\SQLEXPRESS;Database=PersonalBlog;Trusted_Connection=true");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new SummaryMap());
         }
     }
 }
