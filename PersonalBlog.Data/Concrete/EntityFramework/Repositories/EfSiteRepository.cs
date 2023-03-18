@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace PersonalBlog.Data.Concrete.EntityFramework.Repositories
 {
-    public class EfSocialMediasRepository:EfEntityRepositoryBase<SocialMedias>,ISocialMediasRepository
+    public class EfSiteRepository: EfEntityRepositoryBase<Site>,ISiteRepository
     {
-        public EfSocialMediasRepository(DbContext context):base(context)
+        public EfSiteRepository(DbContext context):base(context)
         {
 
         }
