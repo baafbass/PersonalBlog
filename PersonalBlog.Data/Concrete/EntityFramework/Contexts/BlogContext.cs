@@ -31,7 +31,7 @@ namespace PersonalBlog.Data.Concrete.EntityFramework.Contexts
             optionsBuilder.UseSqlServer(connectionString: @"Server=DESKTOP-VOER1P3\SQLEXPRESS;Database=PersonalBlog;Trusted_Connection=true");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        { 
             modelBuilder.ApplyConfiguration(new SummaryMap());
         }
     }
