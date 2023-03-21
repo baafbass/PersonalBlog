@@ -17,8 +17,8 @@ namespace PersonalBlog.Entities.Concrete
         public string SeoTags { get; set; }
         public string SeoDescription { get; set; }
         public int CategoryId { get; set; }
-        public Categories Category { get; set; }
-        ICollection<Comments> Comments { get; set; }
+        public Categories Categories { get; set; }
+        public ICollection<Comments> Comments { get; set; }
 
     }
 }

@@ -12,6 +12,6 @@ namespace PersonalBlog.Entities.Concrete
         public string Name { get; set; }
         public string CategoryImg { get; set; }
         public string Description { get; set; }
-        ICollection<Articles> Articles { get; set; }
+        public ICollection<Articles> Articles { get; set; }
     }
 }

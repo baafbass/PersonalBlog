@@ -11,7 +11,7 @@ namespace PersonalBlog.Entities.Concrete
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Comment { get; set; }
+        public string Text { get; set; }
         public int ArticleId { get; set; }
         public Articles Article { get; set; }
     }

@@ -13,5 +13,6 @@ namespace PersonalBlog.Entities.Concrete
         public string siteKeywords { get; set; }
         public string Logo { get; set; }
         public string LogoTitle { get; set; }
+        public string Description { get; set; }
     }
 }
