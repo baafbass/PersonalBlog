@@ -14,7 +14,7 @@ namespace PersonalBlog.Entities.Concrete
         public string profilPicture { get; set; }
         public string Job { get; set; }
         public string JobIcon { get; set; }
-        public DateTime Birthday { get; set; }
+        public string Birthday { get; set; }
         public string CV { get; set; }
     }
 }

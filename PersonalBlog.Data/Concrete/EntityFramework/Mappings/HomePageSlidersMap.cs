@@ -24,7 +24,7 @@ namespace PersonalBlog.Data.Concrete.EntityFramework.Mappings
             builder.Property(x => x.Title).IsRequired();
             builder.Property(x => x.Title).HasMaxLength(40);
             builder.Property(x => x.ShortContent).IsRequired();
-            builder.Property(x => x.ShortContent).HasMaxLength(500);
+            builder.Property(x => x.ShortContent).HasMaxLength(1000);
             builder.Property(x => x.Content).IsRequired();
             builder.Property(x => x.Content).HasColumnType("NVARCHAR(MAX)");
             builder.ToTable("HomePageSliders");

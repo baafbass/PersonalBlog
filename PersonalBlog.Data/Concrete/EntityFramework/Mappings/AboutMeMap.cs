@@ -34,6 +34,7 @@ namespace PersonalBlog.Data.Concrete.EntityFramework.Mappings
             builder.Property(x => x.CV).IsRequired();
             builder.Property(x => x.CV).HasMaxLength(250);
             builder.Property(x => x.Birthday).IsRequired();
+            builder.Property(x => x.Birthday).HasMaxLength(20);
             builder.ToTable("AboutMe");
             builder.HasData(new AboutMe
             {
@@ -50,7 +51,7 @@ namespace PersonalBlog.Data.Concrete.EntityFramework.Mappings
                 Job = "Software Developer",
                 JobIcon = "<i class=\"fa - solid fa - laptop - code\"></i>",
                 CV ="",
-                Birthday = DateTime.Parse("31.08.2001")
+                Birthday = "31.08.2001"
 
             });
         }

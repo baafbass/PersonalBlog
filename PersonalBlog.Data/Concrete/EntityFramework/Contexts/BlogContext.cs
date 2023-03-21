@@ -28,11 +28,25 @@ namespace PersonalBlog.Data.Concrete.EntityFramework.Contexts
         public DbSet<Summary> Summaries { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectionString: @"Server=DESKTOP-VOER1P3\SQLEXPRESS;Database=PersonalBlog;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(connectionString: @"Server=DESKTOP-VOER1P3\SQLEXPRESS;Database=PersonalBlog;Trusted_Connection=true;");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         { 
             modelBuilder.ApplyConfiguration(new SummaryMap());
+            modelBuilder.ApplyConfiguration(new SocialMediasMap());
+            modelBuilder.ApplyConfiguration(new SkillsMap());
+            modelBuilder.ApplyConfiguration(new SiteMap());
+            modelBuilder.ApplyConfiguration(new HomePageSlidersMap());
+            modelBuilder.ApplyConfiguration(new HobbiesMap());
+            modelBuilder.ApplyConfiguration(new ExperiencesMap());
+            modelBuilder.ApplyConfiguration(new EducationMap());
+            modelBuilder.ApplyConfiguration(new ContactInfoMap());
+            modelBuilder.ApplyConfiguration(new CommentsMap());
+            modelBuilder.ApplyConfiguration(new ContactMeMap());
+            modelBuilder.ApplyConfiguration(new CategoriesMap());
+            modelBuilder.ApplyConfiguration(new ArticlesMap());
+            modelBuilder.ApplyConfiguration(new AdminMap());
+            modelBuilder.ApplyConfiguration(new AboutMeMap());
         }
     }
 }
