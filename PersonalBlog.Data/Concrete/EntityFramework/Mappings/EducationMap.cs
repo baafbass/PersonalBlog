@@ -28,7 +28,7 @@ namespace PersonalBlog.Data.Concrete.EntityFramework.Mappings
             builder.Property(x => x.Duration).IsRequired();
             builder.Property(x => x.Duration).HasMaxLength(30);
             builder.Property(x => x.GradePointAverage).IsRequired();
-            builder.Property(x => x.GradePointAverage).HasMaxLength(10).IsRequired();
+            builder.Property(x => x.GradePointAverage).HasMaxLength(10);
             builder.Property(x => x.Description).IsRequired();
             builder.Property(x => x.Description).HasMaxLength(200);
             builder.ToTable("Education");
