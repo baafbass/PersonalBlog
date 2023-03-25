@@ -8,11 +8,4 @@
     <ProjectReference Include="..\PersonalBlog.Shared\PersonalBlog.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dtos\ArticlesDtos\" />
-    <Folder Include="Dtos\CategoriesDtos\" />
-    <Folder Include="Dtos\CommentsDtos\" />
-    <Folder Include="Dtos\ContactInfoDtos\" />
-  </ItemGroup>
-
 </Project>
