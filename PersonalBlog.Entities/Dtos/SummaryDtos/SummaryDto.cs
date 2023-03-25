@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PersonalBlog.Entities.Dtos.SummaryDtos
 {
-    public class SummaryGetSetDto
+    public class SummaryDto
     {
         public Summary Summary { get; set; }
     }
