@@ -1,6 +1,11 @@
-﻿using PersonalBlog.Entities.Dtos.SummaryDtos;
+﻿using AutoMapper;
+using PersonalBlog.Data.Abstract;
+using PersonalBlog.Entities.Concrete;
+using PersonalBlog.Entities.Dtos.SummaryDtos;
 using PersonalBlog.Services.Abstract;
 using PersonalBlog.Shared.Utilities.Abstract;
+using PersonalBlog.Shared.Utilities.Complex_Types;
+using PersonalBlog.Shared.Utilities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +16,36 @@ namespace PersonalBlog.Services.Concrete
 {
     public class SummaryService : ISummaryService
     {
-        public Task<IDataResult<SummaryDto>> GetAsync(int Id)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+
+        public SummaryService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        public Task<IDataResult<SummaryDto>> UpdateAsync(SummaryDto summaryDto)
+        public async Task<IDataResult<SummaryDto>> GetAsync(int Id)
         {
-            throw new NotImplementedException();
+            var summary = await _unitOfWork.Summary.GetAsync(x => x.ID == Id);
+
+            if(summary != null)
+            {
+                return new DataResult<SummaryDto>(ResultStatus.Success, new SummaryDto { Summary = summary });
+            }
+            return new DataResult<SummaryDto>(ResultStatus.Error,null,"Error, It was not Found!");
+        }
+
+        public async Task<IDataResult<SummaryDto>> UpdateAsync(SummaryUpdateDto summaryUpdateDto)
+        {
+            if(summaryUpdateDto != null)
+            {
+                var summary = _mapper.Map<Summary>(summaryUpdateDto);
+                await _unitOfWork.Summary.UpdateAsync(summary);
+                await _unitOfWork.SaveAsync();
+                return new DataResult<SummaryDto>(ResultStatus.Success, new SummaryDto { Summary = summary });
+            }
+            return new DataResult<SummaryDto>(ResultStatus.Error,null,"Error,check the information you put");
         }
     }
 }
