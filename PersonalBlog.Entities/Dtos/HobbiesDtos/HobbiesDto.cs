@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonalBlog.Entities.Dtos.SocialMediasDtos
+namespace PersonalBlog.Entities.Dtos.HobbiesDtos
 {
-    public class SocialMediasGetDto
+    public class HobbiesDto
     {
-        public SocialMedias SocialMedias { get; set; }
+        public Hobbies Hobbies { get; set; }
     }
 }

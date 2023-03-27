@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PersonalBlog.Entities.Dtos.HobbiesDtos
 {
-    class HobbiesListDtos
+    public class HobbiesListDtos
     {
         public IList<Hobbies> Hobbies { get; set; }
     }
