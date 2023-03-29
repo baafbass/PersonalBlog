@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PersonalBlog.Entities.Dtos.ExperiencesDtos
 {
-    class ExperiencesUpdateDto
+    public class ExperiencesUpdateDto
     {
         [Required]
         public int ID { get; set; }

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using PersonalBlog.Entities.Concrete;
+using PersonalBlog.Entities.Dtos.ExperiencesDtos;
 using PersonalBlog.Entities.Dtos.HobbiesDtos;
+using PersonalBlog.Entities.Dtos.SkillsDtos;
 using PersonalBlog.Entities.Dtos.SlidersDtos;
 using PersonalBlog.Entities.Dtos.SocialMediasDtos;
 using PersonalBlog.Entities.Dtos.SummaryDtos;
@@ -23,6 +25,10 @@ namespace PersonalBlog.Services.AutoMapper
             CreateMap<SocialMedias, SocialMediasUpdateDto>().ReverseMap();
             CreateMap<HomePageSliders, SlidersAddDto>().ReverseMap();
             CreateMap<HomePageSliders, SlidersUpdateDto>().ReverseMap();
+            CreateMap<Skills, SkillsAddDto>().ReverseMap();
+            CreateMap<Skills, SkillsUpdateDto>().ReverseMap();
+            CreateMap<Experiences, ExperiencesAddDto>().ReverseMap();
+            CreateMap<Experiences, ExperiencesUpdateDto>().ReverseMap();
         }
     }
 }
