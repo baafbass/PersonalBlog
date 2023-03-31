@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PersonalBlog.Entities.Dtos.EducationDtos
 {
-    class EducationUpdateDto
+    public class EducationUpdateDto
     {
         [Required]
         //

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PersonalBlog.Entities.Dtos.ContactInfoDtos
 {
-    class ContactInfoUpdateDto
+    public class ContactInfoUpdateDto
     {
         [Required]
         public int ID { get; set; }
