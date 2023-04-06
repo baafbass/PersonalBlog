@@ -1,15 +1,19 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PersonalBlog.Entities.Dtos.AboutMeDtos;
 using PersonalBlog.Services.Abstract;
 using PersonalBlog.Shared.Utilities.Complex_Types;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace PersonalBlog.MVC.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize]
     public class AboutMeController : Controller
     {
         private readonly IAboutMeService _aboutMeService;
@@ -56,20 +60,35 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
             return View();
         }
 
-        /*[HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Edit(AboutMeUpdateDto aboutMeUpdateDto,IFormFile fileImage,IFormFile fileCV)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                if(fileImage!=null)
+                if (fileImage != null)
                 {
-
+                    string imgExtension = Path.GetExtension(fileImage.FileName);
+                    string imgName = Guid.NewGuid() + imgExtension;
+                    string imgPath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/uploads/img/{imgName}");
+                    using var streamImg = new FileStream(imgPath, FileMode.Create);
+                    await fileImage.CopyToAsync(streamImg);
+                    aboutMeUpdateDto.profilPicture = $"/uploads/img/{imgName}";
                 }
-
-
-
+                if(fileCV!=null)
+                {
+                    string cvExtension = Path.GetExtension(fileCV.FileName);
+                    string cvName = Guid.NewGuid() + cvExtension;
+                    string cvPath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/uploads/cv/{cvName}");
+                    using var streamCV = new FileStream(cvPath, FileMode.Create);
+                    await fileImage.CopyToAsync(streamCV);
+                    aboutMeUpdateDto.CV = $"/uploads/cv/{cvName}";
+                }
+                await _aboutMeService.Update(aboutMeUpdateDto, "Abdoul Faride Bassirou Alzouma");
+                return RedirectToAction("Index");
             }
-        }*/
+
+            return View(aboutMeUpdateDto);
+        }
 
 
         public async Task<IActionResult> Details(int id = 1)
