@@ -1,4 +1,5 @@
 ﻿using PersonalBlog.Entities.Dtos.AboutMeDtos;
+using PersonalBlog.Shared.Utilities;
 using PersonalBlog.Shared.Utilities.Abstract;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,10 @@ namespace PersonalBlog.Services.Abstract
 {
     public interface IAboutMeService
     {
-        Task<IDataResult<AboutMeDto>> Get(int id);
-        Task<IDataResult<AboutMeDto>> Update(AboutMeUpdateDto aboutMeUpdateDto);
+        Task<IDataResult<AboutMeDto>> Get(int aboutMeId);
+        Task<IDataResult<AboutMeDto>> Update(AboutMeUpdateDto aboutMeUpdateDto,string modifiedByName);
+        Task<IDataResult<AboutMeUpdateDto>> GetUpdateDto(int aboutMeId);
+        Task<IResult> Delete(int categoryId,string modifiedByName);
+        Task<IResult> HardDelete(int categoryId);
     }
 }

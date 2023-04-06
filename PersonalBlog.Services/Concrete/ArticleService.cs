@@ -122,7 +122,7 @@ namespace PersonalBlog.Services.Concrete
             if(article!=null)
             {
                 article.Views += 1;
-                article.ModifiedTime = DateTime.now;
+                article.ModifiedTime = DateTime.Now;
                 await _unitOfWork.Article.UpdateAsync(article);
                 await _unitOfWork.SaveAsync();
                 return new Result(ResultStatus.Success);
