@@ -11,13 +11,14 @@ namespace PersonalBlog.Services.Abstract
 {
     public interface ISocialMediasService
     {
-        Task<IDataResult<SocialMediasDto>> Get(int id);
+        Task<IDataResult<SocialMediasDto>> Get(int socialMediaAccountId);
+        Task<IDataResult<SocialMediasUpdateDto>> GetUpdateDto(int socialMediaAccountId);
         Task<IDataResult<SocialMediasListDto>> GetAll();
         Task<IDataResult<SocialMediasListDto>> GetAllByNonDelete();
         Task<IDataResult<SocialMediasListDto>> GetAllByNonDeleteAndActive();
-        Task<IDataResult<SocialMediasDto>> Add(SocialMediasAddDto socialMediasAddDto);
-        Task<IDataResult<SocialMediasDto>> Update(SocialMediasUpdateDto socialMediasUpdateDto);
-        Task<IResult> Delete(int id);
-        Task<IResult> HardDelete(int id);
+        Task<IDataResult<SocialMediasDto>> Add(SocialMediasAddDto socialMediasAddDto,string createdByName);
+        Task<IDataResult<SocialMediasDto>> Update(SocialMediasUpdateDto socialMediasUpdateDto,string modifiedByName);
+        Task<IResult> Delete(int socialMediaAccountId,string modifiedByName);
+        Task<IResult> HardDelete(int socialMediaAccountId);
     }
 }
