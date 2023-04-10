@@ -40,7 +40,7 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-            return View();
+            await return View();
         }
 
         [HttpPost]
