@@ -1,4 +1,5 @@
 ﻿using PersonalBlog.Entities.Concrete;
+using PersonalBlog.Shared.Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PersonalBlog.Entities.Dtos.CategoryDtos
 {
-    public class CategoryDto
+    public class CategoryDto : DtoGetBase
     {
         public Categories Category { get; set; }
     }

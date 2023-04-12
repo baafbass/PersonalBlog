@@ -1,4 +1,5 @@
 ﻿using PersonalBlog.Entities.Concrete;
+using PersonalBlog.Shared.Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PersonalBlog.Entities.Dtos.CommentsDtos
 {
-    public class CommentDto
+    public class CommentDto : DtoGetBase
     {
         public Comments Comments { get; set; }
     }
