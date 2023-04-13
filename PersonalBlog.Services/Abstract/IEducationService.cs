@@ -11,13 +11,14 @@ namespace PersonalBlog.Services.Abstract
 {
     public interface IEducationService
     {
-        Task<IDataResult<EducationDto>> Get(int id);
+        Task<IDataResult<EducationDto>> Get(int educationId);
+        Task<IDataResult<EducationUpdateDto>> GetUpdateDto(int educationId);
         Task<IDataResult<EducationListDto>> GetAll();
         Task<IDataResult<EducationListDto>> GetAllByNonDelete();
         Task<IDataResult<EducationListDto>> GetAllByNonDeleteAndActive();
-        Task<IDataResult<EducationDto>> Add(EducationAddDto educationAddDto);
-        Task<IDataResult<EducationDto>> Update(EducationUpdateDto educationUpdateDto);
-        Task<IResult> Delete(int id);
-        Task<IResult> HardDelete(int id);
+        Task<IDataResult<EducationDto>> Add(EducationAddDto educationAddDto,string createdByName);
+        Task<IDataResult<EducationDto>> Update(EducationUpdateDto educationUpdateDto,string modifiedByName);
+        Task<IResult> Delete(int educationId,string modifiedByName);
+        Task<IResult> HardDelete(int educationId);
     }
 }

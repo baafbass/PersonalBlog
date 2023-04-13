@@ -11,13 +11,14 @@ namespace PersonalBlog.Services.Abstract
 {
     public interface IExperienceService
     {
-        Task<IDataResult<ExperiencesDto>> Get(int id);
+        Task<IDataResult<ExperiencesDto>> Get(int experienceId);
+        Task<IDataResult<ExperiencesUpdateDto>> GetUpdateDto(int experienceId);
         Task<IDataResult<ExperiencesListDto>> GetAll();
         Task<IDataResult<ExperiencesListDto>> GetAllByNonDelete();
         Task<IDataResult<ExperiencesListDto>> GetAllByNonDeleteAndActive();
-        Task<IDataResult<ExperiencesDto>> Add(ExperiencesAddDto experiencesAddDto);
-        Task<IDataResult<ExperiencesDto>> Update(ExperiencesUpdateDto experiencesUpdateDto);
-        Task<IResult> Delete(int id);
-        Task<IResult> HardDelete(int id);
+        Task<IDataResult<ExperiencesDto>> Add(ExperiencesAddDto experiencesAddDto,string createdByName);
+        Task<IDataResult<ExperiencesDto>> Update(ExperiencesUpdateDto experiencesUpdateDto,string modifiedByName);
+        Task<IResult> Delete(int experienceId,string modifiedByName);
+        Task<IResult> HardDelete(int experiencId);
     }
 }
