@@ -1,4 +1,5 @@
 ﻿using PersonalBlog.Entities.Dtos.ContactInfoDtos;
+using PersonalBlog.Shared.Utilities;
 using PersonalBlog.Shared.Utilities.Abstract;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,10 @@ namespace PersonalBlog.Services.Abstract
 {
     public interface IContactInfoService
     {
-        Task<IDataResult<ContactInfoDto>> Get(int id);
-        Task<IDataResult<ContactInfoDto>> Update(ContactInfoUpdateDto contactInfoUpdateDto);
+        Task<IDataResult<ContactInfoDto>> Get(int ContactInfoId);
+        Task<IDataResult<ContactInfoUpdateDto>> GetUpdateDto(int ContactInfoId);
+        Task<IDataResult<ContactInfoDto>> Update(ContactInfoUpdateDto contactInfoUpdateDto,string modifiedByName);
+        Task<IResult> Delete(int ContactInfoId,string modifiedByName);
+        Task<IResult> HardDelete(int ContactInfoId);
     }
 }
