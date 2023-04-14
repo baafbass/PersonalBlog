@@ -27,99 +27,159 @@ namespace PersonalBlog.Services.Concrete
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IDataResult<HobbiesDto>> Add(HobbiesAddDtos hobbiesAddDtos)
-        {
-            if(hobbiesAddDtos != null)
-            {
+        public async Task<IDataResult<HobbiesDto>> Add(HobbiesAddDtos hobbiesAddDtos,string createdByName)
+        {  
                 var hobby =  _mapper.Map<Hobbies>(hobbiesAddDtos);
-                await _unitOfWork.Hobbies.AddAsync(hobby);
                 hobby.CreatedTime = DateTime.Now;
+                hobby.ModifiedByName = createdByName;
+                hobby.CreatedByName = createdByName;
+               var addedHobby = await _unitOfWork.Hobbies.AddAsync(hobby);
                 await _unitOfWork.SaveAsync();
-                return new DataResult<HobbiesDto>(ResultStatus.Success, new HobbiesDto { Hobbies = hobby });
-            }
-            return new DataResult<HobbiesDto>(ResultStatus.Error, null, "Error, failed to register");
-            
+                return new DataResult<HobbiesDto>(ResultStatus.Success, 
+                    new HobbiesDto
+                    {
+                        Hobbies = addedHobby,
+                        ResultStatus = ResultStatus.Success,
+                        Info = $"The Hobby {hobby.hobbies} was successfully  added ! "
+                    });
         }
 
-        public async Task<IResult> Delete(int id)
+        public async Task<IResult> Delete(int hobbyId,string modifiedByName)
         {
-            var hobby = await _unitOfWork.Hobbies.GetAsync(x => x.ID == id);
+            var hobby = await _unitOfWork.Hobbies.GetAsync(x => x.ID == hobbyId);
             
             if(hobby!=null)
             {
                 hobby.IsDeleted = true;
+                hobby.ModifiedByName = modifiedByName;
+                hobby.ModifiedTime = DateTime.Now;
                 await _unitOfWork.Hobbies.UpdateAsync(hobby);
                 await _unitOfWork.SaveAsync();
-                return new Result(ResultStatus.Success);
+                return new Result(ResultStatus.Success,$"The Hobby {hobby.hobbies} was successfully Deleted");
             }
             return new Result(ResultStatus.Error, "No record found");
         }
 
-        public async Task<IDataResult<HobbiesDto>> Get(int id)
+        public async Task<IDataResult<HobbiesDto>> Get(int hobbyId)
         {
-            var hobby = await _unitOfWork.Hobbies.GetAsync(x => x.ID == id);
+            var hobby = await _unitOfWork.Hobbies.GetAsync(x => x.ID == hobbyId);
             if(hobby!=null)
             {
-                return new DataResult<HobbiesDto>(ResultStatus.Success, new HobbiesDto { Hobbies = hobby });
+                return new DataResult<HobbiesDto>(ResultStatus.Success, 
+                    new HobbiesDto 
+                    {
+                        Hobbies = hobby,
+                        ResultStatus =ResultStatus.Success
+                    });
             }
-            return new DataResult<HobbiesDto>(ResultStatus.Error,null,"The element was not found");
+            return new DataResult<HobbiesDto>(ResultStatus.Error,
+                new HobbiesDto
+                { 
+                    Hobbies = null,
+                    ResultStatus = ResultStatus.Error,
+                    Info = "Error,Failed To Get the element"
+                },"The element was not found");
         }
 
         public async Task<IDataResult<HobbiesListDtos>> GetAll()
         {
             var hobbyList = await _unitOfWork.Hobbies.GetAllAsync();
-            if(hobbyList.Count > 0)
+            if(hobbyList.Count > -1)
             {
-                return new DataResult<HobbiesListDtos>(ResultStatus.Success, new HobbiesListDtos { Hobbies = hobbyList });
+                return new DataResult<HobbiesListDtos>(ResultStatus.Success,
+                    new HobbiesListDtos
+                    { 
+                        Hobbies = hobbyList,
+                        ResultStatus = ResultStatus.Success
+                    });
             }
-            return new DataResult<HobbiesListDtos>(ResultStatus.Error, null, "Error, No records are found");
+            return new DataResult<HobbiesListDtos>(ResultStatus.Error, new HobbiesListDtos
+            { 
+              Hobbies =null,
+              ResultStatus =ResultStatus.Error,
+              Info = "Error, No Such as records are found"
+            }, "Error, No records are found");
         }
 
         public async Task<IDataResult<HobbiesListDtos>> GetAllByNonDelete()
         {
-            var hobbies = await _unitOfWork.Hobbies.GetAllAsync(x=> x.IsDeleted == false);
-            
-            if(hobbies.Count > 0)
+            var hobbyList = await _unitOfWork.Hobbies.GetAllAsync(x=> x.IsDeleted == false);
+
+            if (hobbyList.Count > -1)
             {
-                return new DataResult<HobbiesListDtos>(ResultStatus.Success, new HobbiesListDtos { Hobbies = hobbies });
+                return new DataResult<HobbiesListDtos>(ResultStatus.Success,
+                    new HobbiesListDtos
+                    {
+                        Hobbies = hobbyList,
+                        ResultStatus = ResultStatus.Success
+                    });
             }
-            return new DataResult<HobbiesListDtos>(ResultStatus.Error, null, "Error,No records are found");
+            return new DataResult<HobbiesListDtos>(ResultStatus.Error, new HobbiesListDtos
+            {
+                Hobbies = null,
+                ResultStatus = ResultStatus.Error,
+                Info = "Error, No Such as records are found"
+            }, "Error, No records are found");
         }
 
         public async Task<IDataResult<HobbiesListDtos>> GetAllByNonDeleteAndActive()
         {
-            var hobbies = await _unitOfWork.Hobbies.GetAllAsync(x => x.IsDeleted == false && x.IsActive==true);
-
-            if (hobbies.Count > 0)
+            var hobbyList = await _unitOfWork.Hobbies.GetAllAsync(x => x.IsDeleted == false && x.IsActive==true);
+            if (hobbyList.Count > -1)
             {
-                return new DataResult<HobbiesListDtos>(ResultStatus.Success, new HobbiesListDtos { Hobbies = hobbies });
+                return new DataResult<HobbiesListDtos>(ResultStatus.Success,
+                    new HobbiesListDtos
+                    {
+                        Hobbies = hobbyList,
+                        ResultStatus = ResultStatus.Success
+                    });
             }
-            return new DataResult<HobbiesListDtos>(ResultStatus.Error, null, "Error,No records are found");
+            return new DataResult<HobbiesListDtos>(ResultStatus.Error, new HobbiesListDtos
+            {
+                Hobbies = null,
+                ResultStatus = ResultStatus.Error,
+                Info = "Error, No Such as records are found"
+            }, "Error, No records are found");
         }
 
-        public async Task<IResult> HardDelete(int id)
+        public async Task<IDataResult<HobbiesUpdateDtos>> GetUpdateDto(int hobbyId)
         {
-            var hobby = await _unitOfWork.Hobbies.GetAsync(x=>x.ID == id);
+            var hobby = await _unitOfWork.Hobbies.GetAsync(x => x.ID == hobbyId);
+            if(hobby!=null)
+            {
+                var hobbyUpdateDto = _mapper.Map<HobbiesUpdateDtos>(hobby);
+                return new DataResult<HobbiesUpdateDtos>(ResultStatus.Success, hobbyUpdateDto);
+            }
+            return new DataResult<HobbiesUpdateDtos>(ResultStatus.Error, null,"Error,It was not found");
+        }
+
+        public async Task<IResult> HardDelete(int hobbyId)
+        {
+            var hobby = await _unitOfWork.Hobbies.GetAsync(x=>x.ID == hobbyId);
 
             if(hobby!=null)
             {
                 await _unitOfWork.Hobbies.DeleteAsync(hobby);
                 await _unitOfWork.SaveAsync();
-                return new Result(ResultStatus.Success);
+                return new Result(ResultStatus.Success,$"The hobby {hobby.hobbies} was successfully Deleted ! ");
             }
             return new Result(ResultStatus.Error,"Error, failed to delete");
         }
 
-        public async Task<IDataResult<HobbiesDto>> Update(HobbiesUpdateDtos hobbiesUpdateDtos)
+        public async Task<IDataResult<HobbiesDto>> Update(HobbiesUpdateDtos hobbiesUpdateDtos,string modifiedByName)
         {
-            if(hobbiesUpdateDtos!=null)
-            {
                 var hobby = _mapper.Map<Hobbies>(hobbiesUpdateDtos);
-                await _unitOfWork.Hobbies.UpdateAsync(hobby);
+                hobby.ModifiedByName = modifiedByName;
+                hobby.ModifiedTime = DateTime.Now;
+                var updatedHobby = await _unitOfWork.Hobbies.UpdateAsync(hobby);
                 await _unitOfWork.SaveAsync();
-                return new DataResult<HobbiesDto>(ResultStatus.Success, new HobbiesDto { Hobbies = hobby });
-            }
-            return new DataResult<HobbiesDto>(ResultStatus.Error, null, "Error, failed to Update");
+                return new DataResult<HobbiesDto>(ResultStatus.Success, 
+                    new HobbiesDto 
+                    {
+                        Hobbies = updatedHobby,
+                        ResultStatus = ResultStatus.Success,
+                        Info = $"The hobby {hobby.hobbies} was successfully Updated"
+                    });
         }
     }
 }

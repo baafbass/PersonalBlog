@@ -1,4 +1,5 @@
 ﻿using PersonalBlog.Entities.Concrete;
+using PersonalBlog.Shared.Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PersonalBlog.Entities.Dtos.HobbiesDtos
 {
-    public class HobbiesListDtos
+    public class HobbiesListDtos : DtoGetBase
     {
         public IList<Hobbies> Hobbies { get; set; }
     }
