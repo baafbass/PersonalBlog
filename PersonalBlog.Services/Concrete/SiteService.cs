@@ -3,6 +3,7 @@ using PersonalBlog.Data.Abstract;
 using PersonalBlog.Entities.Concrete;
 using PersonalBlog.Entities.Dtos.SiteDtos;
 using PersonalBlog.Services.Abstract;
+using PersonalBlog.Shared.Utilities;
 using PersonalBlog.Shared.Utilities.Abstract;
 using PersonalBlog.Shared.Utilities.Complex_Types;
 using PersonalBlog.Shared.Utilities.Concrete;
@@ -24,27 +25,61 @@ namespace PersonalBlog.Services.Concrete
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<IDataResult<SiteDto>> Get(int id)
+
+        public async Task<IResult> Delete(int siteId, string modifiedByName)
         {
-            var siteIdentity = await _unitOfWork.Site.GetAsync(x => x.ID == id);
-            if(siteIdentity!=null)
-            {
-                return new DataResult<SiteDto>(ResultStatus.Success, new SiteDto { Site = siteIdentity });
-            }
-            return new DataResult<SiteDto>(ResultStatus.Error, null, "No record is found");
+            throw new NotImplementedException();
         }
 
-        public async Task<IDataResult<SiteDto>> update(SiteUpdateDto siteUpdateDto)
+        public async Task<IDataResult<SiteDto>> Get(int SiteId = 1)
         {
-            if(siteUpdateDto!=null)
+            var siteIdentity = await _unitOfWork.Site.GetAsync(x => x.ID == SiteId);
+            if(siteIdentity!=null)
             {
-                var siteUpdates = _mapper.Map<Site>(siteUpdateDto);
-                await _unitOfWork.Site.UpdateAsync(siteUpdates);
-                siteUpdates.ModifiedTime = DateTime.Now;
-                await _unitOfWork.SaveAsync();
-                return new DataResult<SiteDto>(ResultStatus.Success, new SiteDto { Site = siteUpdates });
+                return new DataResult<SiteDto>(ResultStatus.Success, 
+                    new SiteDto 
+                    {
+                        Site = siteIdentity,
+                        ResultStatus= ResultStatus.Success
+                    });
             }
-            return new DataResult<SiteDto>(ResultStatus.Error, null, "Failed to Update");
+            return new DataResult<SiteDto>(ResultStatus.Error, new SiteDto
+            {
+             ResultStatus = ResultStatus.Error,
+             Site =null,
+             Info ="No record is found"
+            }, "No record is found");
+        }
+
+        public async Task<IDataResult<SiteUpdateDto>> GetUpdateDto(int SiteId=1)
+        {
+            var identity = await _unitOfWork.Site.GetAsync(x => x.ID == SiteId);
+            if(identity!=null)
+            {
+                var updateSiteDto = _mapper.Map<SiteUpdateDto>(identity);
+                return new DataResult<SiteUpdateDto>(ResultStatus.Success, updateSiteDto);
+            }
+            return new DataResult<SiteUpdateDto>(ResultStatus.Error, null, "Error, Failed to be Found");
+        }
+
+        public async Task<IResult> HardDelete(int siteId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IDataResult<SiteDto>> Update(SiteUpdateDto siteUpdateDto,string modifiedByName)
+        {
+                var siteUpdates = _mapper.Map<Site>(siteUpdateDto);
+                siteUpdates.ModifiedByName = modifiedByName;
+                siteUpdates.ModifiedTime = DateTime.Now;
+                var updatedSite = await _unitOfWork.Site.UpdateAsync(siteUpdates);
+                await _unitOfWork.SaveAsync();
+                return new DataResult<SiteDto>(ResultStatus.Success, new SiteDto 
+                {
+                    Site = updatedSite,
+                    ResultStatus = ResultStatus.Success,
+                    Info= "Site credentials updated successfully"
+                }, "Site credentials updated successfully");
         }
     }
 }
