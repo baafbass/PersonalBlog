@@ -1,4 +1,5 @@
 ﻿using PersonalBlog.Entities.Dtos.SummaryDtos;
+using PersonalBlog.Shared.Utilities;
 using PersonalBlog.Shared.Utilities.Abstract;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,10 @@ namespace PersonalBlog.Services.Abstract
 {
     public interface ISummaryService
     {
-        Task<IDataResult<SummaryDto>> GetAsync(int Id);
-        Task<IDataResult<SummaryDto>> UpdateAsync(SummaryUpdateDto summaryUpdateDto);
-
+        Task<IDataResult<SummaryDto>> Get(int summaryId);
+        Task<IDataResult<SummaryUpdateDto>> GetUpdateDto(int summaryId);
+        Task<IDataResult<SummaryDto>> Update(SummaryUpdateDto summaryUpdateDto,string modifiedByName);
+        Task<IResult> Delete(int summaryId, string modifiedByName);
+        Task<IResult> HardDelete(int summaryId);
     }
 }
