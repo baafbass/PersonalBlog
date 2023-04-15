@@ -12,13 +12,14 @@ namespace PersonalBlog.Services.Abstract
 {
     public interface ISlidersService
     {
-        Task<IDataResult<SlidersDto>> Get(int id);
+        Task<IDataResult<SlidersDto>> Get(int sliderId);
+        Task<IDataResult<SlidersUpdateDto>> GetUpdateDto(int sliderId);
         Task<IDataResult<SlidersListDto>> GetAll();
         Task<IDataResult<SlidersListDto>> GetAllByNonDelete();
         Task<IDataResult<SlidersListDto>> GetAllByNonDeleteAndActive();
-        Task<IDataResult<SlidersDto>> Add(SlidersAddDto slidersAddDto);
-        Task<IDataResult<SlidersDto>> Update(SlidersUpdateDto slidersUpdateDto);
-        Task<IResult> Delete(int id);
-        Task<IResult> HardDelete(int id);
+        Task<IDataResult<SlidersDto>> Add(SlidersAddDto slidersAddDto,string createdByName);
+        Task<IDataResult<SlidersDto>> Update(SlidersUpdateDto slidersUpdateDto,string modifiedByName);
+        Task<IResult> Delete(int sliderId,string modifiedByName);
+        Task<IResult> HardDelete(int sliderId);
     }
 }

@@ -169,7 +169,7 @@ namespace PersonalBlog.Services.Concrete
                 var updateCommentDto = _mapper.Map<CommentUpdateDto>(comment);
                 return new DataResult<CommentUpdateDto>(ResultStatus.Success, updateCommentDto);
             }
-            return new DataResult<CommentUpdateDto>(ResultStatus.Error,null,"Error,It was not found"),
+            return new DataResult<CommentUpdateDto>(ResultStatus.Error, null, "Error,It was not found");
         }
 
         public async Task<IResult> HardDelete(int commentId)

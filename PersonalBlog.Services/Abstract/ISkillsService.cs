@@ -11,13 +11,14 @@ namespace PersonalBlog.Services.Abstract
 {
     public interface ISkillsService
     {
-        Task<IDataResult<SkillsDto>> Get(int id);
+        Task<IDataResult<SkillsDto>> Get(int skillId);
+        Task<IDataResult<SkillsUpdateDto>> GetUpdateDto(int SkillId);
         Task<IDataResult<SkillsListDto>> GetAll();
         Task<IDataResult<SkillsListDto>> GetAllByNonDelete();
         Task<IDataResult<SkillsListDto>> GetAllByNonDeleteAndActive();
-        Task<IDataResult<SkillsDto>> Add(SkillsAddDto skillsAddDto);
-        Task<IDataResult<SkillsDto>> Update(SkillsUpdateDto skillsUpdateDto);
-        Task<IResult> Delete(int id);
-        Task<IResult> HardDelete(int id);
+        Task<IDataResult<SkillsDto>> Add(SkillsAddDto skillsAddDto,string createdByName);
+        Task<IDataResult<SkillsDto>> Update(SkillsUpdateDto skillsUpdateDto,string modifiedByName);
+        Task<IResult> Delete(int skillId,string modifiedByName);
+        Task<IResult> HardDelete(int skillId);
     }
 }
