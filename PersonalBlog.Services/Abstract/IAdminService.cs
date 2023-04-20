@@ -1,4 +1,5 @@
 ﻿using PersonalBlog.Entities.Dtos.AdminDtos;
+using PersonalBlog.Shared.Utilities;
 using PersonalBlog.Shared.Utilities.Abstract;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,10 @@ namespace PersonalBlog.Services.Abstract
 {
     public interface IAdminService
     {
-        Task<IDataResult<AdminDto>> Get(int id);
-        Task<IDataResult<AdminDto>> Update(AdminUpdateDto adminUpdateDto);
+        Task<IDataResult<AdminDto>> Get(int adminId);
+        Task<IDataResult<AdminUpdateDto>> GetUpdateDto(int adminId);
+        Task<IDataResult<AdminDto>> Update(AdminUpdateDto adminUpdateDto, string modifiedByName);
+        Task<IResult> Delete(int adminId, string modifiedByName);
+        Task<IResult> HardDelete(int adminId);
     }
 }

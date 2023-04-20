@@ -3,6 +3,7 @@ using PersonalBlog.Data.Abstract;
 using PersonalBlog.Entities.Concrete;
 using PersonalBlog.Entities.Dtos.AdminDtos;
 using PersonalBlog.Services.Abstract;
+using PersonalBlog.Shared.Utilities;
 using PersonalBlog.Shared.Utilities.Abstract;
 using PersonalBlog.Shared.Utilities.Complex_Types;
 using PersonalBlog.Shared.Utilities.Concrete;
@@ -24,27 +25,52 @@ namespace PersonalBlog.Services.Concrete
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<IDataResult<AdminDto>> Get(int id)
+
+        public Task<IResult> Delete(int categoryId, string modifiedByName)
         {
-            var admin = await _unitOfWork.Admin.GetAsync(x => x.ID == id);
-            if (admin != null)
-            {
-                return new DataResult<AdminDto>(ResultStatus.Success, new AdminDto { Admin = admin });
-            }
-            return new DataResult<AdminDto>(ResultStatus.Error, null, "Error,NO record is found");
+            throw new NotImplementedException();
         }
 
-        public async Task<IDataResult<AdminDto>> Update(AdminUpdateDto adminUpdateDto)
+        public async Task<IDataResult<AdminDto>> Get(int adminId = 1)
         {
-            if (adminUpdateDto != null)
+            var admin = await _unitOfWork.Admin.GetAsync(x => x.ID == adminId);
+            return new DataResult<AdminDto>(ResultStatus.Success, new AdminDto
             {
-                var admin = _mapper.Map<Admin>(adminUpdateDto);
-                await _unitOfWork.Admin.UpdateAsync(admin);
-                admin.ModifiedTime = DateTime.Now;
-                await _unitOfWork.SaveAsync();
-                return new DataResult<AdminDto>(ResultStatus.Success, new AdminDto { Admin = admin });
+                Admin = admin,
+                ResultStatus = ResultStatus.Success,
+                Info = "Operation Successed !"
+            });
+        }
+
+        public async Task<IDataResult<AdminUpdateDto>> GetUpdateDto(int adminId)
+        {
+            var admin = await _unitOfWork.Admin.GetAsync(x => x.ID == adminId);
+            if (admin != null)
+            {
+                var adminUpdateDto = _mapper.Map<AdminUpdateDto>(admin);
+                return new DataResult<AdminUpdateDto>(ResultStatus.Success, adminUpdateDto);
             }
-            return new DataResult<AdminDto>(ResultStatus.Error, null, "Failed to Update");
+            return new DataResult<AdminUpdateDto>(ResultStatus.Error,null, "Hata, kayıt bulunamadı!");
+        }
+
+        public Task<IResult> HardDelete(int categoryId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IDataResult<AdminDto>> Update(AdminUpdateDto adminUpdateDto, string modifiedByName)
+        {
+            var admin = _mapper.Map<Admin>(adminUpdateDto);
+            admin.ModifiedByName = modifiedByName;
+            admin.ModifiedTime = DateTime.Now;
+            var updatedAdmin = await _unitOfWork.Admin.UpdateAsync(admin);
+            await _unitOfWork.SaveAsync();
+            return new DataResult<AdminDto>(ResultStatus.Success, new AdminDto
+            {
+                Admin = updatedAdmin,
+                ResultStatus = ResultStatus.Success,
+                Info = "Operation Successed !"
+            });
         }
     }
 }

@@ -23,8 +23,8 @@ namespace PersonalBlog.Data.Concrete.EntityFramework.Mappings
             builder.Property(x => x.IsDeleted).IsRequired();
             builder.Property(x => x.Email).IsRequired();
             builder.Property(x => x.Email).HasMaxLength(100);
-            builder.Property(x => x.Password).IsRequired();
-            builder.Property(x => x.Password).HasMaxLength(250);
+            builder.Property(x => x.PasswordHash).IsRequired();
+            builder.Property(x => x.PasswordHash).HasMaxLength(250);
             builder.Property(x => x.SecurityQuestions).IsRequired();
             builder.Property(x => x.SecurityQuestions).HasMaxLength(200);
             builder.Property(x => x.SQAnswers).IsRequired();
@@ -40,7 +40,7 @@ namespace PersonalBlog.Data.Concrete.EntityFramework.Mappings
                 IsActive = false,
                 IsDeleted = false,
                 Email = "abdoulfaridbassirou7898@gmai.com",
-                Password = "3a799ade3169bd0d5da32652a3a888c5",
+                PasswordHash = "3a799ade3169bd0d5da32652a3a888c5",
                 SecurityQuestions = "What is your father name",
                 SQAnswers = "a453e0ac9f56a805e5249ffdf7d04847"
             });

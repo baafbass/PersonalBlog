@@ -10,7 +10,7 @@ namespace PersonalBlog.Entities.Concrete
     public class Admin:EntityBase,IEntity
     {
         public string Email { get; set; }
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
         public string SecurityQuestions { get; set; }
         public String SQAnswers { get; set; }
     }

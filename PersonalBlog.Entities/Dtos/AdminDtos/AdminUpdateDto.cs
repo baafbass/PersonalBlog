@@ -16,21 +16,25 @@ namespace PersonalBlog.Entities.Dtos.AdminDtos
         [Required(ErrorMessage ="{0} field is required")]
         [DisplayName("E-mail")]
         [MaxLength(100,ErrorMessage = "{0} field must be at maximun {1} characters")]
+        [MinLength(2, ErrorMessage = "{0} field has a minimum of {1} characters!")]
         public string Email { get; set; }
         //
         [Required(ErrorMessage = "{0} field is required")]
         [DisplayName("Password")]
         [MaxLength(250, ErrorMessage = "{0} field must be at maximun {1} characters")]
-        public string Password { get; set; }
+        [MinLength(2, ErrorMessage = "{0} field has a minimum of {1} characters!")]
+        public string PasswordHash { get; set; }
         //
         [Required(ErrorMessage = "{0} field is required")]
         [DisplayName("Security Question")]
         [MaxLength(200, ErrorMessage = "{0} field must be at maximun {1} characters")]
+        [MinLength(2, ErrorMessage = "{0} field has a minimum of {1} characters!")]
         public string SecurityQuestions { get; set; }
         //
         [Required(ErrorMessage = "{0} field is required")]
         [DisplayName("Security Question Answer")]
         [MaxLength(250, ErrorMessage = "{0} field must be at maximun {1} characters")]
+        [MinLength(2, ErrorMessage = "{0} field has a minimum of {1} characters!")]
         public String SQAnswers { get; set; }
         //
         [Required(ErrorMessage = "{0} is a required field.")]
