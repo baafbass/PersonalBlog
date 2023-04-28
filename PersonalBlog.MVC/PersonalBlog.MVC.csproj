@@ -10,23 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\AboutMe\" />
-    <Folder Include="Areas\Admin\Views\Article\" />
-    <Folder Include="Areas\Admin\Views\Category\" />
-    <Folder Include="Areas\Admin\Views\Comment\" />
-    <Folder Include="Areas\Admin\Views\Education\" />
-    <Folder Include="Areas\Admin\Views\Experience\" />
-    <Folder Include="Areas\Admin\Views\Contact\" />
-    <Folder Include="Areas\Admin\Views\Home\" />
-    <Folder Include="Areas\Admin\Views\Hobby\" />
-    <Folder Include="Areas\Admin\Views\Messages\" />
-    <Folder Include="Areas\Admin\Views\Summary\" />
-    <Folder Include="Areas\Admin\Views\SiteIdentity\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Admin\Views\Session\" />
-    <Folder Include="Areas\Admin\Views\Slider\" />
-    <Folder Include="Areas\Admin\Views\Skill\" />
-    <Folder Include="Areas\Admin\Views\SocialAccount\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
     <Folder Include="Views\" />
