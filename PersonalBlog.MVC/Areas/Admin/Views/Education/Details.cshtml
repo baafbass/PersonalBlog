@@ -1,5 +1,53 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.EducationDtos.EducationDto
+
 @{
+    ViewBag.Title = "Education's details";
 }
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Education">Educations</a></li>
+    <li class="breadcrumb-item">Education Details</li>
+</ol>
+<hr />
+<h2 class="text-center">Education Details</h2>
+<div>
+    <dl class="dl-horizontal">
+        <dt>Educaion</dt>
+        <dd>@Model.Education.educationTitle</dd>
+
+        <dt>School</dt>
+        <dd>@Model.Education.School</dd>
+
+        <dt>Education duration</dt>
+        <dd>@Model.Education.Duration</dd>
+
+        <dt>Graduation Grade</dt>
+        <dd>@Model.Education.GradePointAverage</dd>
+
+        <dt>Description</dt>
+        <dd>@Model.Education.Description</dd>
+
+        <dt>Is Deleted?</dt>
+        <dd>@Model.Education.IsDeleted</dd>
+
+        <dt>Is Active?</dt>
+        <dd>@Model.Education.IsActive</dd>
+
+        <dt>Created Time</dt>
+        <dd>@Model.Education.CreatedTime</dd>
+
+        <dt>Created By</dt>
+        <dd>@Model.Education.CreatedByName</dd>
+
+        <dt>Modified Time</dt>
+        <dd>@Model.Education.ModifiedTime</dd>
+
+        <dt>Modified By</dt>
+        <dd>@Model.Education.ModifiedByName</dd>
+    </dl>
+</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a asp-action="Edit" asp-controller="Education" asp-area="Admin" asp-route-id="@Model.Education.ID" class="btn btn-primary"><i class="fas fa-edit"></i> Update</a>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="Education" asp-area="Admin"><i class="fas fa-undo"></i> Return</a>
+</div>

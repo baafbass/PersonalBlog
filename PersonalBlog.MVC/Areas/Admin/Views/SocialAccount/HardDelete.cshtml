@@ -1,5 +1,50 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.SocialMediasDtos.SocialMediasDto
+
 @{
+    ViewBag.Title = "Deleting Social Media Account";
 }
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="SocialMedias">Social Media Accounts</a></li>
+    <li class="breadcrumb-item">Delete Social Media Account</li>
+</ol>
+
+<hr />
+<h2 class="text-center">Delete Social Media Account</h2>
+<hr />
+<h3>Do you want to delete the selected account from the datebase?</h3>
+<hr />
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Account FontAwesome</dt>
+        <dd style="font-size:40px">@Html.Raw(Model.SocialMedias.MediaLogo)</dd>
+
+        <dt>Account Link</dt>
+        <dd><a href="@Model.SocialMedias.MediaURL">@Model.SocialMedias.MediaURL</a></dd>
+
+        <dt>Is Deleted?</dt>
+        <dd>@Model.SocialMedias.IsDeleted</dd>
+
+        <dt>Is Active?</dt>
+        <dd>@Model.SocialMedias.IsActive</dd>
+
+        <dt>Created Time</dt>
+        <dd>@Model.SocialMedias.CreatedTime</dd>
+
+        <dt>Created By</dt>
+        <dd>@Model.SocialMedias.CreatedByName</dd>
+
+        <dt>Modified Time</dt>
+        <dd>@Model.SocialMedias.ModifiedTime</dd>
+
+        <dt>Modified By</dt>
+        <dd>@Model.SocialMedias.ModifiedByName</dd>
+    </dl>
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a asp-action="DoHardDelete" asp-controller="SocialMedias" asp-area="Admin" asp-route-id="@Model.SocialMedias.ID" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="Categories" asp-area="Admin"><i class="fas fa-undo"></i> Return</a>
+</div>

@@ -1,5 +1,41 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.ExperiencesDtos.ExperiencesAddDto
+
 @{
+    ViewBag.Title = "Add Experience";
 }
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Experiences">Experiences</a></li>
+    <li class="breadcrumb-item">Experiences</li>
+</ol>
+<hr />
+<h2 class="text-center">Add Experience</h2>
+<form method="post" asp-action="Add">
+    <div class="form-group">
+        <label asp-for="experienceTitle"></label>
+        <input asp-for="experienceTitle" class="form-control" />
+        <span asp-validation-for="experienceTitle" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="jobPosition"></label>
+        <input asp-for="jobPosition" class="form-control" />
+        <span asp-validation-for="jobPosition" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Duration"></label>
+        <input asp-for="Duration" class="form-control" />
+        <span asp-validation-for="Duration" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="offset-lg-1">
+            <button class="btn btn-success" type="submit"><i class="far fa-save"></i> Add</button>
+        </div>
+    </div>
+</form>
+<a asp-action="Index" class="btn btn-danger"><i class="fas fa-undo"></i> Return</a>

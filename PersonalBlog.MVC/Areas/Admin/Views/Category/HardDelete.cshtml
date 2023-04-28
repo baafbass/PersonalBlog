@@ -1,5 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.CategoryDtos.CategoryDto
+
+
 @{
+    ViewBag.Title = "Delete Category";
 }
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Categories">List Of Categories</a></li>
+    <li class="breadcrumb-item">Delete Category</li>
+</ol>
+<hr />
+<h2 class="text-center">Delete Category</h2>
+<hr />
+<h3>Do you want to delete the category of @Model.Category.Name Title?</h3>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>Category</dt>
+        <dd>@Model.Category.Name</dd>
+
+        <dt>Category FontAwesome</dt>
+        <dd style="font-size:30px">@Html.Raw(Model.Category.CategoryImg)</dd>
+
+        <dt>Açıklama</dt>
+        <dd>@Model.Category.Description</dd>
+
+        <dt>Silindi mi?</dt>
+        <dd>@Model.Category.IsDeleted</dd>
+
+        <dt>Aktif mi?</dt>
+        <dd>@Model.Category.IsActive</dd>
+
+        <dt>Oluşturulma Zamanı</dt>
+        <dd>@Model.Category.CreatedTime</dd>
+
+        <dt>Oluşturan</dt>
+        <dd>@Model.Category.CreatedByName</dd>
+
+        <dt>Düzenlenme Zamanı</dt>
+        <dd>@Model.Category.ModifiedTime</dd>
+
+        <dt>Düzenleyen</dt>
+        <dd>@Model.Category.ModifiedByName</dd>
+    </dl>
+</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a asp-action="DoHardDelete" asp-controller="Categories" asp-area="Admin" asp-route-id="@Model.Category.ID" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="Categories" asp-area="Admin"><i class="fas fa-undo"></i> Return</a>
+</div>

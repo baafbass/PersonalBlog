@@ -1,5 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.ContactInfoDtos.ContactInfoUpdateDto
+
 @{
+    ViewBag.Title = "Update Contact Information";
 }
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="ContactInfo">Contact Info</a></li>
+    <li class="breadcrumb-item">Update Contact Info</li>
+</ol>
+<hr />
+<h2 class="text-center">Update Contact Info</h2>
+<form method="post" asp-action="Edit">
+    <input hidden asp-for="ID" />
+    <div class="form-group">
+        <label asp-for="phoneNumber"></label>
+        <input asp-for="phoneNumber" class="form-control" />
+        <span asp-validation-for="phoneNumber"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="City"></label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="City"></label>
+        <textarea asp-for="City" class="form-control" rows="2"></textarea>
+        <span asp-validation-for="City"></span>
+    </div>
+    <input hidden asp-for="IsActive" />
+    <input hidden asp-for="IsDeleted" />
+    <div class="form-group">
+        <div class="offset-lg-1">
+            <button class="btn btn-success"><i class="far fa-save"></i> Update</button>
+        </div>
+    </div>
+</form>
+<a asp-action="Index" class="btn btn-danger"><i class="fas fa-undo"></i> Return</a>

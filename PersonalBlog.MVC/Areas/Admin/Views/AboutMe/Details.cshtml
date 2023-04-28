@@ -1,5 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model PersonalBlog.Entities.Dtos.AboutMeDtos.AboutMeDto
+
+@{ 
+    ViewBag.Title = "About Me Informations Details";
 }
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="AboutMe">About Me</a></li>
+    <li class="breadcrumb-item">About Me Information Details</li>
+</ol>
+
+<hr/>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Frist Name</dt>
+        <dd>@Model.AboutMe.FirstName</dd>
+
+        <dt>Last Name</dt>
+        <dd>@Model.AboutMe.LastName</dd>
+
+        <dt>Picture</dt>
+        <dd><img src="@Model.AboutMe.profilPicture" alt="Abdoul Faride Bassirou Alzouma" class="w-50 img-fluid" /></dd>
+
+        <dt>Job Fontawesome</dt>
+        <dd style="font-size:50px">@Html.Raw(Model.AboutMe.JobIcon)</dd>
+
+        <dt>Job</dt>
+        <dd>@Model.AboutMe.Job</dd>
+
+        <dt>BirthDate</dt>
+        <dd>@Model.AboutMe.Birthday</dd>
+
+        <dt>My CV Resume</dt>
+        <dd><a href="@Model.AboutMe.CV" download="" class="btn btn-outline-primary"><i class="fas fa-download"></i> Download</a></dd>
+
+        <dt>Created Time</dt>
+        <dd>@Model.AboutMe.CreatedTime</dd>
+
+        <dt>Created By</dt>
+        <dd>@Model.AboutMe.CreatedByName</dd>
+
+        <dt>Modified Time</dt>
+        <dd>@Model.AboutMe.ModifiedTime</dd>
+
+        <dt>Modified By</dt>
+        <dd>@Model.AboutMe.ModifiedByName</dd>
+    </dl>
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a asp-action="Edit" asp-controller="AboutMe" asp-area="Admin" asp-route-id="@Model.AboutMe.ID" class="btn btn-primary"><i class="fas fa-edit"></i> Modify </a>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="AboutMe" asp-area="Admin"><i class="fas fa-info-circle"></i> Return</a>
+</div>
+

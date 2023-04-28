@@ -1,5 +1,36 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.CategoryDtos.CategoryAddDto
+
 @{
+    ViewBag.Title = "Add Category";
 }
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Categories">List of Categories</a></li>
+    <li class="breadcrumb-item">Add Category</li>
+</ol>
+<hr />
+<h2 class="text-center">Add Category</h2>
+<form method="post" asp-action="Add">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryImg"></label>
+        <input asp-for="CategoryImg" class="form-control" />
+        <span asp-validation-for="CategoryImg" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control" rows="2"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="offset-lg-1">
+            <button class="btn btn-success" type="submit"><i class="far fa-save"></i> Add</button>
+        </div>
+    </div>
+</form>
+<a asp-action="Index" class="btn btn-danger"><i class="fas fa-undo"></i> Return</a>

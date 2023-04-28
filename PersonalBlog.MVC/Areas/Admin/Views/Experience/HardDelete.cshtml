@@ -1,5 +1,53 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.ExperiencesDtos.ExperiencesDto
+
 @{
+    ViewBag.Title = "Delete Experience";
 }
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Experiences">Experiences</a></li>
+    <li class="breadcrumb-item">Delete Experience</li>
+</ol>
+<hr />
+<h2 class="text-center">Experience Details</h2>
+<hr />
+<h3>Do you  want to delete the experience with @Model.Experiences.experienceTitle title?</h3>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>Experience</dt>
+        <dd>@Model.Experiences.experienceTitle</dd>
+
+        <dt>Work Place</dt>
+        <dd>@Model.Experiences.jobPosition</dd>
+
+        <dt>Experience Duration</dt>
+        <dd>@Model.Experiences.Duration</dd>
+
+        <dt>Description</dt>
+        <dd>@Model.Experiences.Description</dd>
+
+        <dt>Is Deleted?</dt>
+        <dd>@Model.Experiences.IsDeleted</dd>
+
+        <dt>Is Active?</dt>
+        <dd>@Model.Experiences.IsActive</dd>
+
+        <dt>Created Time</dt>
+        <dd>@Model.Experiences.CreatedTime</dd>
+
+        <dt>Created By</dt>
+        <dd>@Model.Experiences.CreatedByName</dd>
+
+        <dt>Modified Time</dt>
+        <dd>@Model.Experiences.ModifiedTime</dd>
+
+        <dt>Modified By</dt>
+        <dd>@Model.Experiences.ModifiedByName</dd>
+    </dl>
+</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a asp-action="DoHardDelete" asp-controller="Experiences" asp-area="Admin" asp-route-id="@Model.Experience.ID" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="Experiences" asp-area="Admin"><i class="fas fa-undo"></i> Return</a>
+</div>

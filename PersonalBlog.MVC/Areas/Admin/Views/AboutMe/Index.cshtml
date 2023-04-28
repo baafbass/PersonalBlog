@@ -1,5 +1,75 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.AboutMeDtos.AboutMeDto
+
 @{
+    ViewBag.Title = "About Me Information";
+}
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item">About Me</li>
+</ol>
+
+<hr />
+
+@if (Model.ResultStatus == ResultStatus.Success)
+{
+    <h2 class="text-center">About Me</h2>
+    <table class="table table-responsive-lg table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Picture</th>
+                <th>Job FA</th>
+                <th>Job</th>
+                <th>BirthDate</th>
+                <th>CV Resume</th>
+                <th>Created Time</th>
+                <th>Created By</th>
+                <th>Edit Time</th>
+                <th>Edit By</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tfoot class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Picture</th>
+                <th>Job FA</th>
+                <th>Job</th>
+                <th>BirthDate</th>
+                <th>CV Resume</th>
+                <th>Created Time</th>
+                <th>Created By</th>
+                <th>Edit Time</th>
+                <th>Edit By</th>
+                <th>Operation</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>@Model.AboutMe.ID</td>
+                <td>@Model.AboutMe.FirstName</td>
+                <td>@Model.AboutMe.LastName</td>
+                <td><img src="@Model.AboutMe.profilPicture" alt="Picture" class="img-fluid" /></td>
+                <td style="font-size:30px">@Html.Raw(Model.AboutMe.JobIcon)</td>
+                <td>@Model.AboutMe.Job</td>
+                <td>@Model.AboutMe.Birthday</td>
+                <td><a href="@Model.AboutMe.CV">CV Resume <i class="fas fa-download"></i></a></td>
+                <td>@Model.AboutMe.CreatedTime.ToShortDateString()</td>
+                <td>@Model.AboutMe.CreatedByName</td>
+                <td>@Model.AboutMe.ModifiedTime.ToShortDateString()</td>
+                <td>@Model.AboutMe.ModifiedByName</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a class="btn btn-primary" asp-area="Admin" asp-controller="AboutMe" asp-action="Edit" asp-route-id="@Model.AboutMe.ID" title="Edit"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-secondary" asp-area="Admin" asp-controller="AboutMe" asp-action="Details" asp-route-id="@Model.AboutMe.ID" title="Examine in Details"><i class="fas fa-info-circle"></i></a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 }
