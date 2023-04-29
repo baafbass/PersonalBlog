@@ -1,5 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.ContactMeDtos.ContactMeDto  
+
 @{
+    ViewBag.Title = "Delete Message";
 }
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="ContactMe">Messages</a></li>
+    <li class="breadcrumb-item">Delete Messages</li>
+</ol>
+<hr />
+<h2 class="text-center">Message Details</h2>
+<hr />
+<h3>Do you want to delete the @Model.ContactMe.FirstName @Model.ContactMe.LastName's Message?</h3>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>First Name</dt>
+        <dd>@Model.ContactMe.FirstName</dd>
+
+        <dt>Last Name</dt>
+        <dd>@Model.ContactMe.LastName</dd>
+
+        <dt>E-Mail</dt>
+        <dd>@Model.ContactMe.EmailAdress</dd>
+
+        <dt>Subject</dt>
+        <dd>@Model.ContactMe.Subject</dd>
+
+        <dt>Message</dt>
+        <dd>@Model.ContactMe.Message</dd>
+
+        <dt>Is Deleted?</dt>
+        <dd>@Model.ContactMe.IsDeleted</dd>
+
+        <dt>Is Active?</dt>
+        <dd>@Model.ContactMe.IsActive</dd>
+
+        <dt>Created Time</dt>
+        <dd>@Model.ContactMe.CreatedTime</dd>
+
+        <dt>Created By</dt>
+        <dd>@Model.ContactMe.CreatedByName</dd>
+
+        <dt>Modified Time</dt>
+        <dd>@Model.ContactMe.ModifiedTime</dd>
+
+        <dt>Modified By</dt>
+        <dd>@Model.ContactMe.ModifiedByName</dd>
+    </dl>
+</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a asp-action="DoHardDelete" asp-controller="ContactMe" asp-area="Admin" asp-route-id="@Model.ContactMe.ID" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="ContactMe" asp-area="Admin"><i class="fas fa-undo"></i> Return</a>
+</div>

@@ -1,5 +1,89 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.SkillsDtos.SkillsDto
+
 @{
+    ViewBag.Title = "Delete Skill";
 }
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Skills">Skills</a></li>
+    <li class="breadcrumb-item">Delete Skill</li>
+</ol>
+<hr />
+<div>
+    <h2 class="text-center">Yetenek Detayları</h2><hr />
+    <h3>Do you want to delete @Model.Skills.SkillName skill?</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Skill
+        </dt>
+
+        <dd>
+            @Model.Skills.SkillName
+        </dd>
+
+        <dt>
+            Skill's Percentage
+        </dt>
+
+        <dd>
+            % @Model.Skills.Percentage
+        </dd>
+
+        <dt>
+            Is Deleted?
+        </dt>
+
+        <dd>
+            @Model.Skills.IsDeleted
+        </dd>
+
+        <dt>
+            Is Active?
+        </dt>
+
+        <dd>
+            @Model.Skills.IsActive
+        </dd>
+
+        <dt>
+            Created Time
+        </dt>
+        <dd>
+            @Model.Skills.CreatedTime
+        </dd>
+
+        <dt>
+            Created By
+        </dt>
+        <dd>
+            @Model.Skills.CreatedByName
+        </dd>
+
+        <dt>
+            Modified Time
+        </dt>
+        <dd>
+            @Model.Skills.ModifiedTime
+        </dd>
+
+        <dt>
+            Modified By
+        </dt>
+        <dd>
+            @Model.Skills.ModifiedByName
+        </dd>
+
+        <dt>
+            Note
+        </dt>
+        <dd>
+            @Model.Skills.Note
+        </dd>
+    </dl>
+</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a asp-action="DoHardDelete" asp-controller="Skill" asp-area="Admin" asp-route-id="@Model.Skills.ID" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="Skills" asp-area="Admin"><i class="fas fa-info-circle"></i> Return</a>
+</div>

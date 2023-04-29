@@ -1,5 +1,53 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.SlidersDtos.SlidersUpdateDto
+
 @{
+    ViewBag.Title = "Update Sliders";
+}
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="HomePageSliders">Sliders</a></li>
+    <li class="breadcrumb-item">Update Sliders</li>
+</ol>
+<hr />
+<form method="post" asp-action="Edit">
+    <input type="hidden" asp-for="ID" />
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input class="form-control" asp-for="Title" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ShortContent"></label>
+        <input class="form-control" asp-for="ShortContent" />
+        <span asp-validation-for="ShortContent" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IsActive" class="form-check-label"></label>
+        <input type="checkbox" asp-for="IsActive" />
+        <span asp-validation-for="IsActive" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IsDeleted"></label>
+        <input asp-for="IsDeleted" type="checkbox" />
+        <span asp-validation-for="IsDeleted"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content" class="form-control" style="min-height:500px;" rows="10" id="editor">
+        </textarea>
+        <span asp-validation-for="Content"></span>
+    </div>
+    <div class="form-group">
+        <div class="offset-lg-1 col-lg-10">
+            <button class="btn btn-success" type="submit"><i class="far fa-save"></i> Update</button>
+        </div>
+    </div>
+</form>
+<a asp-action="Index" class="btn btn-danger"><i class="fas fa-undo"></i> Return</a>
+
+@section Scripts{
+    <script>
+
+    </script>
 }

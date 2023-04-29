@@ -1,5 +1,67 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.SiteDtos.SiteDto
+
 @{
+    ViewBag.Title = "Site Identity";
+    Layout = "_Layout";
+}
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item">Site Identity</li>
+</ol>
+<hr />
+@if (Model.ResultStatus == ResultStatus.Success)
+{
+    <h2 class="text-center">Site Identity</h2>
+    <table class="table table-responsive-lg table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Tags</th>
+                <th>Description</th>
+                <th>Logo FA</th>
+                <th>Logo Name</th>
+                <th>Created Time</th>
+                <th>Created By</th>
+                <th>Modified Time</th>
+                <th>Modified By</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tfoot class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Tags</th>
+                <th>Description</th>
+                <th>Logo FA</th>
+                <th>Logo Name</th>
+                <th>Created Time</th>
+                <th>Created By</th>
+                <th>Modified Time</th>
+                <th>Modified By</th>
+                <th>Operation</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>@Model.Site.ID</td>
+                <td>@Model.Site.siteName</td>
+                <td>@Model.Site.siteKeywords</td>
+                <td>@Model.Site.Description</td>
+                <td>@Html.Raw(Model.Site.Logo)</td>
+                <td>@Model.Site.LogoTitle</td>
+                <td>@Model.Site.CreatedTime.ToShortDateString()</td>
+                <td>@Model.Site.CreatedByName</td>
+                <td>@Model.Site.ModifiedTime.ToShortDateString()</td>
+                <td>@Model.Site.ModifiedByName</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a class="btn btn-primary" asp-area="Admin" asp-controller="Site" asp-action="Edit" asp-route-id="@Model.Site.ID" title="Update"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-secondary" asp-area="Admin" asp-controller="Site" asp-action="Details" asp-route-id="@Model.Site.ID" title="Examine Details"><i class="fas fa-info-circle"></i></a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 }

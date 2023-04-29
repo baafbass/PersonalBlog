@@ -1,5 +1,88 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.SkillsDtos.SkillsDto
+
 @{
+    ViewBag.Title = "Skill Details";
 }
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Skills">Skills</a></li>
+    <li class="breadcrumb-item">Skill Details</li>
+</ol>
+<hr />
+<div>
+    <h2 class="text-center">Skill Details</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Skill
+        </dt>
+
+        <dd>
+            @Model.Skills.SkillName
+        </dd>
+
+        <dt>
+            Skill Percentage
+        </dt>
+
+        <dd>
+            % @Model.Skills.Percentage
+        </dd>
+
+        <dt>
+            Is Deleted?
+        </dt>
+
+        <dd>
+            @Model.Skills.IsDeleted
+        </dd>
+
+        <dt>
+            Is Active?
+        </dt>
+
+        <dd>
+            @Model.Skills.IsActive
+        </dd>
+
+        <dt>
+            Created Time
+        </dt>
+        <dd>
+            @Model.Skills.CreatedTime
+        </dd>
+
+        <dt>
+            Created By
+        </dt>
+        <dd>
+            @Model.Skills.CreatedByName
+        </dd>
+
+        <dt>
+           Modified Time
+        </dt>
+        <dd>
+            @Model.Skills.ModifiedTime
+        </dd>
+
+        <dt>
+            Modified By
+        </dt>
+        <dd>
+            @Model.Skills.ModifiedByName
+        </dd>
+
+        <dt>
+            Not
+        </dt>
+        <dd>
+            @Model.Skills.Note
+        </dd>
+    </dl>
+</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a asp-action="Edit" asp-controller="Skill" asp-area="Admin" asp-route-id="@Model.Skills.ID" class="btn btn-primary"><i class="fas fa-edit"></i> Details</a>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="Skills" asp-area="Admin"><i class="fas fa-undo"></i> Return</a>
+</div>

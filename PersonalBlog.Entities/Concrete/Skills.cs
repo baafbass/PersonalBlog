@@ -11,5 +11,6 @@ namespace PersonalBlog.Entities.Concrete
     {
         public string SkillName { get; set; }
         public int Percentage { get; set; }
+        public string Note { get; set; }
     }
 }

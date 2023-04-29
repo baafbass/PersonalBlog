@@ -1,5 +1,82 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PersonalBlog.Entities.Dtos.SlidersDto 
+
 @{
+    ViewBag.Title = "Slider Details";
 }
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-action="Index" asp-controller="Slider">Sliders</a></li>
+    <li class="breadcrumb-item">Sliders Details</li>
+</ol>
+<hr />
+<div>
+    <h2 class="text-center">Slider Details</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Title
+        </dt>
+        <dd>
+            @Model.Sliders.Title
+        </dd>
+
+        <dt>
+            Short Content
+        </dt>
+        <dd>
+            @Model.Sliders.ShortContent
+        </dd>
+
+        <dt>
+            Is Deleted?
+        </dt>
+        <dd>
+            @Model.Sliders.IsDeleted
+        </dd>
+
+        <dt>
+            Is Active?
+        </dt>
+        <dd>
+            @Model.Sliders.IsActive
+        </dd>
+
+        <dt>
+            Created Time
+        </dt>
+        <dd>
+            @Model.Sliders.CreatedTime
+        </dd>
+
+        <dt>
+            Created By
+        </dt>
+        <dd>
+            @Model.Sliders.CreatedByName
+        </dd>
+
+        <dt>
+            Modified Time
+        </dt>
+        <dd>
+            @Model.Sliders.ModifiedTime
+        </dd>
+
+        <dt>
+            Modified By
+        </dt>
+        <dd>
+            @Model.Sliders.ModifiedByName
+        </dd>
+
+        <dt>Content</dt>
+        <dd>
+            @Html.Raw(Model.Sliders.Content)
+        </dd>
+    </dl>
+</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a asp-action="Edit" asp-controller="HomePageSliders" asp-area="Admin" asp-route-id="@Model.Sliders.ID" class="btn btn-primary"><i class="fas fa-edit"></i> Update</a>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="HomePageSliders" asp-area="Admin"><i class="fas fa-undo"></i> Return</a>
+</div>
