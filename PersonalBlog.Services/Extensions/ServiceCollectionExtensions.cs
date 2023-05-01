@@ -33,6 +33,7 @@ namespace PersonalBlog.Services.Extensions
             serviceCollection.AddScoped<ISocialMediasService, SocialMediasManager>();
             serviceCollection.AddScoped<ISiteService, SiteManager>();
             serviceCollection.AddScoped<ISkillsService, SkillsManager>();
+            serviceCollection.AddScoped<ISlidersService, SlidersManager>();
             return serviceCollection;
         }
     }
