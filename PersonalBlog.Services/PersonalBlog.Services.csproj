@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PersonalBlog.Data\PersonalBlog.Data.csproj" />
+    <ProjectReference Include="..\PersonalBlog.Entities\PersonalBlog.Entities.csproj" />
+    <ProjectReference Include="..\PersonalBlog.Shared\PersonalBlog.Shared.csproj" />
   </ItemGroup>
 
 </Project>
