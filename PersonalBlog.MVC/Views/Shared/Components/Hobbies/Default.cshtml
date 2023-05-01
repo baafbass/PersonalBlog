@@ -1,0 +1,5 @@
+﻿@model PersonalBlog.Entities.Dtos.HobbiesDtos.HobbiesListDtos
+@foreach (var item in Model.Hobbies)
+{
+    <p><i class="fas fa-check-circle"></i> @item.hobbies</p>
+}

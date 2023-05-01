@@ -1,0 +1,12 @@
+﻿@model PersonalBlog.Entities.Dtos.SlidersDto 
+@{ 
+    ViewBag.Title = $"{Model.Sliders.Title}";
+}
+<section id="more" class="px-lg-5">
+    <div class="cerceve text-center">
+        <h1 class="display-4 font-weight-bold pt-5">@Model.Sliders.Title.ToUpper()</h1>
+        <div class="aciklama">
+            @Html.Raw(Model.Sliders.Content)
+        </div>
+    </div>
+</section>

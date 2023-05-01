@@ -1,0 +1,10 @@
+﻿@model PersonalBlog.Entities.Dtos.SocialMediasDtos.SocialMediasListDto
+
+@foreach (var item in Model.SocialMedias)
+{
+    <li class="list-inline-item">
+        <a href="@item.MediaURL" class="px-2" style="font-size:2.5rem" title="@item.MediaURL">
+            @Html.Raw(item.MediaLogo)
+        </a>
+    </li>
+}

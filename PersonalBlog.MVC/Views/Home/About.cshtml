@@ -1,0 +1,60 @@
+﻿@model PersonalBlog.Entities.Dtos.AboutMeDtos.AboutMeDto 
+@{ 
+    ViewBag.Title = "About Me";
+}
+<section id="about">
+    <div class="cerceve">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="display-4 font-weight-bold">About Me</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-5 p-5">
+                <img src="@Model.AboutMe.profilPicture" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-6 aboutInfo ml-auto py-5 ">
+                <h4 class="p-0 m-0">Hello I am</h4>
+                <h1 class="font-weight-bold isim">@Model.AboutMe.FirstName @Model.AboutMe.LastName</h1>
+                <h1 class="pt-2 pb-4">@Html.Raw(Model.AboutMe.JobIcon) @Model.AboutMe.Job</h1>
+                <h4 class="py-2"><i class="fas fa-birthday-cake pr-2"></i> @Model.AboutMe.Birthday</h4>
+                <h4 class="py-2"><i class="fas fa-phone-alt pr-2"></i> @ViewBag.ContactInfo.PhoneNumber</h4>
+                <h4 class="py-2">
+                    <i class="far fa-envelope pr-2"></i> <a href="mailto:@ViewBag.ContactInfo.Email">@ViewBag.ContactInfo.Email</a>
+                </h4>
+                <h4 class="py-2"><i class="fas fa-home pr-2"></i>@ViewBag.ContactInfo.ShortAdress</h4>
+                <a href="@Model.AboutMe.CV" download class="btn mt-2 downloadCV">
+                    <h4><i class="far fa-id-card"></i> Browse My Resume</h4>
+                </a>
+                <ul class="list-inline pt-5">
+                    @await Component.InvokeAsync("FooterAccounts")
+                </ul>
+            </div>
+        </div>
+        <hr>
+        @await Component.InvokeAsync("Summary")
+        <hr>
+        <div class="row">
+            @await Component.InvokeAsync("Skills")
+        </div>
+        <hr>
+        <div class="row text-center py-5">
+            <div class="col-lg-6" id="deneyimler">
+                <h2 class="pb-4"><i class="fas fa-clipboard-list"></i> EXPERIENCES</h2>
+                @await Component.InvokeAsync("Experiences")
+            </div>
+            <div class="col-lg-6" id="egitimler">
+                <h2 class="pb-4"><i class="fas fa-university"></i> EDUCATION</h2>
+                @await Component.InvokeAsync("Educations")
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6 mx-auto interested pb-5">
+                <h2 class="text-center pt-4 pb-5"><i class="fas fa-running"></i> My HOBBIES</h2>
+                @await Component.InvokeAsync("Hobbies")
+            </div>
+        </div>
+    </div>
+</section>
