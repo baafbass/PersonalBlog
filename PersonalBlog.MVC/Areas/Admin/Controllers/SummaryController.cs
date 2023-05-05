@@ -58,7 +58,7 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _summaryService.Update(summaryUpdateDto, "Hasan Erdal");
+                await _summaryService.Update(summaryUpdateDto, "Abdoul Faride Bassirou Alzouma");
                 return RedirectToAction("Index");
             }
             return View(summaryUpdateDto);
