@@ -17,15 +17,15 @@ namespace PersonalBlog.MVC.ViewComponents
             {
                 _educationService = educationService;
             }
-            public IViewComponentResult Invoke()
-            {
-                var datas = GetEducations().Result;
-                return View(datas);
-            }
-            public async Task<EducationListDto> GetEducations()
-            {
-                var educations = await _educationService.GetAllByNonDeleteAndActive();
-                return educations.Data;
-            }
+         public IViewComponentResult Invoke()
+         {
+             var datas = GetEducations().Result;
+             return View(datas);
+         }
+        public async Task<EducationListDto> GetEducations()
+        {
+            var educations = await _educationService.GetAllByNonDeleteAndActive();
+            return educations.Data;
         }
+    }
     }

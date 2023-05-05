@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace PersonalBlog.MVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    //[Authorize]
     public class EducationController : Controller
     {
         private readonly IEducationService _educationService;
@@ -63,7 +63,7 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var education = await _educationService.Get(id);
+            var education = await _educationService.GetUpdateDto(id);
 
             if(education.ResultStatus ==ResultStatus.Error)
             {

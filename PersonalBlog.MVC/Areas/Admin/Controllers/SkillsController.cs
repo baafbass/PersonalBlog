@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 namespace PersonalBlog.MVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    //[Authorize]
+    //[Route("Admin/Skill")]
     public class SkillsController : Controller
     {
         private readonly ISkillsService _skillService;
@@ -20,6 +21,7 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
         {
             _skillService = skillService;
         }
+        
         public async Task<IActionResult> Index()
         {
             var skills = await _skillService.GetAll();

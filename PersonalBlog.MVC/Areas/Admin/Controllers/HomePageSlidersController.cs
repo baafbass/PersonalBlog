@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace PersonalBlog.MVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    //[Authorize]
     public class HomePageSlidersController : Controller
     {
         private readonly ISlidersService _sliderService;
@@ -20,7 +20,7 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
         {
             _sliderService = sliderService;
         }
-
+        
         public async Task<IActionResult> Index()
         {
             var sliders = await _sliderService.GetAll();

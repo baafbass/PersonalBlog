@@ -22,13 +22,16 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
             _adminService = adminService;
         }
 
+        //[Route("Admin")]
         [HttpGet]
         public async Task<IActionResult> LogIn()
         {
-            return View();
+            return  View();
         }
 
+       
         [HttpPost]
+        [Route("Admin")]
         public async Task<IActionResult> LogIn(AdminLoginDto adminLoginDto)
         {
             var adminInfo = await _adminService.Get(1);
@@ -39,16 +42,18 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
 
             if (admin.Email == adminLoginDto.Email && admin.PasswordHash == strResult.Replace("-", ""))
             {
-                var claims = new List<Claim>{new Claim(ClaimTypes.Name,adminLoginDto.Email)};
-
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,adminLoginDto.Email)
+                };
             var identity = new ClaimsIdentity(claims, "login");
             ClaimsPrincipal principal = new ClaimsPrincipal(identity);
             await HttpContext.SignInAsync(principal);
-            return RedirectToAction("Index", "Home", new { are = "Admin" });
-        }
+            return RedirectToAction("Index", "Home", new { area = "Admin" });
+             }
 
             return View(adminLoginDto);
-        }
+         }
 
         [HttpGet]
         public async Task<IActionResult> ForgotPassword()

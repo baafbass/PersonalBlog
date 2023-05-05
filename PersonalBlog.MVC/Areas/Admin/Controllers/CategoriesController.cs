@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace PersonalBlog.MVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    //[Authorize]
     public class CategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;
@@ -61,7 +61,7 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var category = await _categoryService.Get(id);
+            var category = await _categoryService.GetUpdateDto(id);
 
             if (category.ResultStatus == ResultStatus.Error)
             {

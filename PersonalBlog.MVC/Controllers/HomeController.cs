@@ -16,7 +16,6 @@ namespace PersonalBlog.MVC.Controllers
     public class HomeController : Controller
     {
         private readonly ISlidersService _slidersService;
-
         private readonly IAboutMeService _aboutMeService;
         private readonly ISiteService _siteService;
         private readonly IContactInfoService _contactInfoService;
@@ -83,8 +82,8 @@ namespace PersonalBlog.MVC.Controllers
             }
             if(aboutMe.ResultStatus == ResultStatus.Success)
             {
-                var contactInfo = await _contactInfoService.Get(1);
-                ViewBag.ContactInfo = contactInfo.Data.ContactInfo;
+                var contactInfo = await _aboutMeService.Get(1);
+                ViewBag.ContactInfo = contactInfo.Data.Info;
                 ViewBag.about = "active";
                 return View(contactInfo.Data);
             }

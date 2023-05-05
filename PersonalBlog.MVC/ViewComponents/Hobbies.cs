@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace PersonalBlog.MVC.ViewComponents
 {
-    public class Interesteds : ViewComponent
+    public class Hobbies : ViewComponent
     {
         private readonly IHobbiesService _hobbyService;
 
-        public Interesteds(IHobbiesService hobbyService)
+        public Hobbies(IHobbiesService hobbyService)
         {
             _hobbyService = hobbyService;
         }

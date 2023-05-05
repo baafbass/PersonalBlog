@@ -41,11 +41,17 @@ namespace PersonalBlog.MVC
 
             app.UseEndpoints(endpoints =>
             {
+                 endpoints.MapControllerRoute(
+                 name: "areas",
+                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                    );
+
                 endpoints.MapAreaControllerRoute(
                   name: "Admin",
                   areaName: "Admin",
                   pattern: "Admin/{controller = Home}/{action=Index}/{id?}"
                 );
+
                 endpoints.MapDefaultControllerRoute();
             });
         }

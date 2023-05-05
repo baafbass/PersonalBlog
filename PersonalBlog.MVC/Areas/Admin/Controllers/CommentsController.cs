@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace PersonalBlog.MVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    //[Authorize]
     public class CommentsController : Controller
     {
         private readonly ICommentService _commentService;
