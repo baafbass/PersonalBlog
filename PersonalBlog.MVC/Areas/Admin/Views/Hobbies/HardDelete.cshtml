@@ -1,7 +1,7 @@
 ﻿@model PersonalBlog.Entities.Dtos.HobbiesDtos.HobbiesDto
 
 @{
-    ViewBag.Title = "Hobi Silme";
+    ViewBag.Title = "Delete Hobby";
 }
 
 <ol class="breadcrumb mb-4">
@@ -39,6 +39,6 @@
     </dl>
 </div>
 <div class="btn-group" role="group" aria-label="Basic example">
-    <a asp-action="DoHardDelete" asp-controller="Interested" asp-area="Admin" asp-route-id="@Model.Hobbies.ID" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
-    <a class="btn btn-warning" asp-action="Index" asp-controller="HomePageSliders" asp-area="Admin"><i class="fas fa-undo"></i> Return</a>
+    <a asp-action="DoHardDelete" asp-controller="Hobbies" asp-area="Admin" asp-route-id="@Model.Hobbies.ID" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="Hobbies" asp-area="Admin"><i class="fas fa-undo"></i> Return</a>
 </div>
