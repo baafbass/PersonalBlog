@@ -11,7 +11,12 @@
 </ol>
 <hr />
 
-<form method="post" asp-action="Edit">
+<form method="Post" asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="MediaName"></label>
+        <input asp-for="MediaName" class="form-control" />
+        <span asp-validation-for="MediaName" class="text-danger"></span>
+    </div>
     <div class="form-group">
         <label asp-for="MediaLogo"></label>
         <input asp-for="MediaLogo" class="form-control" />
@@ -34,7 +39,7 @@
     </div>
     <div class="form-group">
         <div class="offset-lg-1">
-            <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Save</button>
+            <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Update</button>
         </div>
     </div>
 </form>

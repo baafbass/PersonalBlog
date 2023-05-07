@@ -82,15 +82,15 @@ namespace PersonalBlog.MVC.Controllers
             }
             if(aboutMe.ResultStatus == ResultStatus.Success)
             {
-                var contactInfo = await _aboutMeService.Get(1);
-                ViewBag.ContactInfo = contactInfo.Data.Info;
+                var contactInfo = await _contactInfoService.Get(1);
+                ViewBag.ContactInfo = contactInfo.Data.ContactInfo;
                 ViewBag.about = "active";
-                return View(contactInfo.Data);
+                return View(aboutMe.Data);
             }
             return NotFound();
         }
 
-        [Route("blog")]
+       [Route("blog")]
         public async Task<IActionResult> Blog(int page=1)
         {
             ViewBag.Blog = "active";
@@ -100,7 +100,7 @@ namespace PersonalBlog.MVC.Controllers
             return View(List);
         }
 
-        [Route("blog/{category}")]
+       [Route("blog/{category}")]
         public async Task<IActionResult> BlogWithCategory(int id,int page = 1)
         {
             ViewBag.Blog = "active";

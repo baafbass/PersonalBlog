@@ -26,14 +26,16 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
         {
             var accounts = await _socialMediaService.GetAll();
 
+            if (accounts.ResultStatus == ResultStatus.Success)
+            {
+                return View(accounts.Data);
+            }
+
             if (accounts.ResultStatus == ResultStatus.Error)
             {
                 return NotFound();
             }
-            if(accounts.ResultStatus == ResultStatus.Success)
-            {
-                return View(accounts.Data);
-            }
+            
             return NotFound();
         }
 
@@ -62,7 +64,7 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
                 return NotFound();
             }
             var account = await _socialMediaService.GetUpdateDto(id);
-            if(ResultStatus.Success == account.ResultStatus)
+            if(account.ResultStatus==ResultStatus.Success)
             {
                 return View(account.Data);
             }

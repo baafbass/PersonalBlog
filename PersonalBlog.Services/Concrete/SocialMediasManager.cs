@@ -30,6 +30,7 @@ namespace PersonalBlog.Services.Concrete
            
                 var socialMedia = _mapper.Map<SocialMedias>(socialMediasAddDto);
                 socialMedia.CreatedByName = createdByName;
+                socialMedia.CreatedTime = DateTime.Now;
                 socialMedia.ModifiedByName = createdByName;
                 socialMedia.ModifiedTime = DateTime.Now; 
                 var addedMedia = await _unitOfWork.SocialMedias.AddAsync(socialMedia);

@@ -13,6 +13,11 @@
 
 <form method="post" asp-action="Add">
     <div class="form-group">
+        <label asp-for="MediaName"></label>
+        <input asp-for="MediaName" class="form-control" />
+        <span asp-validation-for="MediaName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
         <label asp-for="MediaLogo"></label>
         <input asp-for="MediaLogo" class="form-control" />
         <span asp-validation-for="MediaLogo" class="text-danger"></span>
