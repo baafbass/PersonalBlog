@@ -29,7 +29,9 @@
                         <div class="carousel-item active">
                             <div class="col-12 slider-bg text-center py-5">
                                 <h1 class="display-4 font-weight-bold py-5">@item.Title.ToUpper()</h1>
-                                <p class="py-5">@item.ShortContent</p>
+                                <p class="py-5">
+                                     @item.ShortContent
+                                </p>
                                 <a asp-action="SliderDetail" title="@item.Title" asp-route-Title="@PersonalBlog.Shared.Helpers.SeoHelper.ToSeoUrl(item.Title)" asp-route-id="@item.ID" class="btn btn-block btn-lg w-50 mx-auto my-5" type="button">See more</a>
                             </div>
                         </div>

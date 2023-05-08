@@ -22,8 +22,9 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
             _adminService = adminService;
         }
 
-        //[Route("Admin")]
+        
         [HttpGet]
+        //[Route("Admin")]
         public async Task<IActionResult> LogIn()
         {
             return  View();

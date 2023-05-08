@@ -20,13 +20,13 @@
                 <h4 class="p-0 m-0">Hello I am</h4>
                 <h1 class="font-weight-bold isim">@Model.AboutMe.FirstName @Model.AboutMe.LastName</h1>
                 <h1 class="pt-2 pb-4">@Html.Raw(Model.AboutMe.JobIcon) @Model.AboutMe.Job</h1>
-                <h4 class="py-2"><i class="fas fa-birthday-cake pr-2"></i> @Model.AboutMe.Birthday</h4>
-                <h4 class="py-2"><i class="fas fa-phone-alt pr-2"></i> @ViewBag.ContactInfo.phoneNumber</h4> 
+                <h4 class="py-2"><i class="fas fa-birthday-cake pr-2"></i>@Model.AboutMe.Birthday</h4>
+                <h4 class="py-2"><i class="fas fa-phone-alt pr-2"></i>@ViewBag.ContactInfo.phoneNumber</h4> 
                 <h4 class="py-2">
-                    <i class="far fa-envelope pr-2"></i> <a href="mailto:@ViewBag.ContactInfo.Email">@ViewBag.ContactInfo.Email</a>
+                    <i class="far fa-envelope pr-2"></i><a href="mailto:@ViewBag.ContactInfo.Email">@ViewBag.ContactInfo.Email</a>
                 </h4>
                 <h4 class="py-2"><i class="fas fa-home pr-2"></i>@ViewBag.ContactInfo.Adress</h4>
-                <a href="@Model.AboutMe.CV" download class="btn mt-2 downloadCV">
+                <a href="@Model.AboutMe.CV" download  class="btn mt-2 downloadCV">
                     <h4><i class="far fa-id-card"></i> Browse My Resume</h4>
                 </a>
                 <ul class="list-inline pt-5">

@@ -80,7 +80,7 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
                     string cvName = Guid.NewGuid() + cvExtension;
                     string cvPath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/uploads/cv/{cvName}");
                     using var streamCV = new FileStream(cvPath, FileMode.Create);
-                    await fileImage.CopyToAsync(streamCV);
+                    await fileCV.CopyToAsync(streamCV);
                     aboutMeUpdateDto.CV = $"/uploads/cv/{cvName}";
                 }
                 await _aboutMeService.Update(aboutMeUpdateDto, "Abdoul Faride Bassirou Alzouma");
