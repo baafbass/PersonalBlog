@@ -9,6 +9,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 
 namespace PersonalBlog.MVC.Areas.Admin.Controllers
 {
@@ -124,6 +125,12 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
                 return RedirectToAction("Setting");
             }
             return View(adminUpdateDto);
+        }
+
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("LogIn", "Session");
         }
     }
 }
