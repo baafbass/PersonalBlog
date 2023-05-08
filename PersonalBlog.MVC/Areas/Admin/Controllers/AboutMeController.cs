@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace PersonalBlog.MVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-   // [Authorize]
+    [Authorize]
     public class AboutMeController : Controller
     {
         private readonly IAboutMeService _aboutMeService;

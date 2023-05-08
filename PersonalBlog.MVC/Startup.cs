@@ -34,6 +34,8 @@ namespace PersonalBlog.MVC
                 app.UseStatusCodePages();
             }
 
+           // app.UseHttpsRedirection();
+            //app.UseAuthentication();
             app.UseRouting();
             app.UseStaticFiles();
             app.UseAuthentication();

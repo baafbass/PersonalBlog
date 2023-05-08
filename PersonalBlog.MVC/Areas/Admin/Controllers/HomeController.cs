@@ -13,7 +13,8 @@ using System.Threading.Tasks;
 namespace PersonalBlog.MVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize]
+    [Authorize]
+    //[AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ISkillsService _skillService;

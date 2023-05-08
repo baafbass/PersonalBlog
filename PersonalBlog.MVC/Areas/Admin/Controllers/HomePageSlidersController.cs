@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace PersonalBlog.MVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize]
+    [Authorize]
     public class HomePageSlidersController : Controller
     {
         private readonly ISlidersService _sliderService;

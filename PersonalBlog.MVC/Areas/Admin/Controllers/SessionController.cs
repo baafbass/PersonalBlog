@@ -31,7 +31,7 @@ namespace PersonalBlog.MVC.Areas.Admin.Controllers
 
        
         [HttpPost]
-        [Route("Admin")]
+        //[Route("Admin")]
         public async Task<IActionResult> LogIn(AdminLoginDto adminLoginDto)
         {
             var adminInfo = await _adminService.Get(1);
